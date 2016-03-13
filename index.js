@@ -14,19 +14,18 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 request('http://www.huffingtonpost.com/', function (error, response, body) {
-  console.log(response)
   var results = [];
   if (!error && response.statusCode == 200) {
     $ = cheerio.load(body);
 
     $('h2').each(function(i, elem){
       results.push({
-        title: $(this).a(),
+        title: $(this).children("a").text(),
         // link: "http://www.reddit.com" + $(this).children().attr("href")
       })
     });
   }
-
+debugger
   console.log(results)
 })
 
