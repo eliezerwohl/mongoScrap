@@ -22,11 +22,11 @@ db.once('open', function() {
 
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-  name: String
+var Article = new Schema({
+  article: String
 });
 
-var User = mongoose.model('User', UserSchema);
+var Title = mongoose.model('Title', Article);
 
 
 
@@ -36,9 +36,13 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 app.get('/', function(req, res) {
-  var user = new User(req.body)
+  res.sendfile("index.html");
+});
 
-  user.save(function(err, doc) {
+app.post("/submit", function(req, res) {
+  var article = new Title(req.body)
+
+  article.save(function(err, doc) {
     if (err) {
       res.send(err);
     } else {
@@ -46,8 +50,7 @@ app.get('/', function(req, res) {
     }
   });
 
-  res.sendfile("index.html");
-});
+})
 
 app.get("/huffscrape", function(req, res){
   request('http://www.huffingtonpost.com/', function (error, response, body) {
