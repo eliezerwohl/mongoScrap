@@ -40,7 +40,7 @@ app.get('/', function(req, res) {
 });
 
 app.post("/submit", function(req, res) {
-  var article = new Title(req.body)
+  var article = new Title({article:req.body.article})
 
   article.save(function(err, doc) {
     if (err) {
@@ -52,6 +52,8 @@ app.post("/submit", function(req, res) {
 
 })
 
+
+
 app.get("/huffscrape", function(req, res){
   request('http://www.huffingtonpost.com/', function (error, response, body) {
   var results = [];
@@ -59,15 +61,26 @@ app.get("/huffscrape", function(req, res){
     $ = cheerio.load(body);
 
     $('h2').each(function(i, elem){
-      results.push({
+     var theTitle = $(this).children("a").text();
+     console.log(theTitle)
+        var Article = new Title({article: theTitle});
+      Article.save(function(err, doc) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("saved");
+      
+    }
+  });
+  results.push({
         title: $(this).children("a").text(),
         // link: "http://www.reddit.com" + $(this).children().attr("href")
       })
     });
   }
-debugger
-  console.log(results)
+
 })
+  res.send("complete")
 })
 
 app.listen(PORT, function() {
