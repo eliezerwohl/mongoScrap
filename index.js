@@ -10,11 +10,42 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+
+mongoose.connect('mongodb://localhost/abesimpson');
+var db = mongoose.connection;
+db.on('error', function(err) {
+  console.log('Mongoose Error: ', err);
+});
+db.once('open', function() {
+  console.log('Mongoose connection successful.');
+});
+
+var Schema = mongoose.Schema;
+
+var UserSchema = new Schema({
+  name: String
+});
+
+var User = mongoose.model('User', UserSchema);
+
+
+
+
 app.use(express.static('public'));
 var request = require('request');
 var cheerio = require('cheerio');
 
 app.get('/', function(req, res) {
+  var user = new User(req.body)
+
+  user.save(function(err, doc) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
+  });
+
   res.sendfile("index.html");
 });
 
