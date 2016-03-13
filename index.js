@@ -13,10 +13,8 @@ app.use(express.static('public'));
 var request = require('request');
 var cheerio = require('cheerio');
 
-
-
 app.get('/', function(req, res) {
-  res.send("herro there");
+  res.sendfile("index.html");
 });
 
 app.get("/huffscrape", function(req, res){
