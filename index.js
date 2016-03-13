@@ -13,7 +13,14 @@ app.use(express.static('public'));
 var request = require('request');
 var cheerio = require('cheerio');
 
-request('http://www.huffingtonpost.com/', function (error, response, body) {
+
+
+app.get('/', function(req, res) {
+  res.send("herro there");
+});
+
+app.get("/huffscrape", function(req, res){
+  request('http://www.huffingtonpost.com/', function (error, response, body) {
   var results = [];
   if (!error && response.statusCode == 200) {
     $ = cheerio.load(body);
@@ -30,10 +37,7 @@ debugger
 })
 
 
-app.get('/', function(req, res) {
-  res.send("herro there");
-});
-
+})
 
 app.listen(3000, function() {
   console.log('App running on port 3000!');
