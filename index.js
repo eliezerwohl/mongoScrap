@@ -22,7 +22,11 @@ db.once('open', function() {
 });
 var Schema = mongoose.Schema;
 var Article = new Schema({
-  article: String
+  article: String,
+  notes: [{
+    type: Schema.Types.ObjectId,
+    ref:'Note'
+  }]
 });
 
 var Title = mongoose.model('Title', Article);
