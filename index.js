@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var PORT = 3000;
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
@@ -33,10 +34,8 @@ app.get("/huffscrape", function(req, res){
 debugger
   console.log(results)
 })
-
-
 })
 
-app.listen(3000, function() {
-  console.log('App running on port 3000!');
+app.listen(PORT, function() {
+  console.log('App running on port '+ PORT);
 });
