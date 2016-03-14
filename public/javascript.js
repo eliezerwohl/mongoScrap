@@ -8,8 +8,8 @@ var oneData = data[dataNum];
 var objectId =  oneData._id;
 
 $("#headline").append(oneData.article)
-$("#review").append('<form action="/review' + objectId + '" method="post">\
-      <textarea rows="4" cols="50">  </textarea>\
+$("#review").append('<form action="/review/' + objectId + '" method="post">\
+      <textarea rows="4" cols="50" name="review">  </textarea>\
       <button type="submit"> Comment on this headline </button>\
     </form>')
 })
@@ -22,8 +22,8 @@ var oneData = data[dataNum];
 $("#headline, #review").empty()
 var objectId =  oneData._id;
 $("#headline").append(oneData.article);
-$("#review").append('<form action="/review' + objectId + '" method="post">\
-      <textarea rows="4" cols="50">  </textarea>\
+$("#review").append('<form action="/review/' + objectId + '" method="post">\
+      <textarea rows="4" cols="50" name="review">  </textarea>\
       <button type="submit"> Comment on this headline </button>\
     </form>')
 })

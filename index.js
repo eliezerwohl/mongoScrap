@@ -67,6 +67,13 @@ app.post("/submit", function(req, res) {
 })
 
 
+app.post("/review/:ObjectId", function(req, res) {
+var ObjectId = req.params.ObjectId
+console.log(ObjectId + " " + req.body.review);
+res.redirect("/")
+
+});
+
 
 app.get("/huffscrape", function(req, res) {
   request('http://www.huffingtonpost.com/', function(error, response, body) {
