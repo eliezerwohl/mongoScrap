@@ -1,7 +1,8 @@
 var dataNum;
 
 
-$.getJSON("/all", function(data){
+$.getJSON("/all", function(data){ 
+  debugger
 console.log(data[10])
 dataNum = 10;
 var oneData = data[dataNum];

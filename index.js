@@ -21,6 +21,7 @@ db.once('open', function() {
   console.log('Mongoose connection successful.');
 });
 var Schema = mongoose.Schema;
+
 var Article = new Schema({
   article: String,
   notes: [{
@@ -29,7 +30,17 @@ var Article = new Schema({
   }]
 });
 
+
 var Title = mongoose.model('Title', Article);
+
+var ReviewSchema = new Schema({
+  noteReview: {
+    type:String
+  }
+});
+var Note = mongoose.model('Note', ReviewSchema);
+
+
 app.use(express.static('public'));
 var request = require('request');
 var cheerio = require('cheerio');
@@ -68,10 +79,29 @@ app.post("/submit", function(req, res) {
 
 
 app.post("/review/:ObjectId", function(req, res) {
-var ObjectId = req.params.ObjectId
-console.log(ObjectId + " " + req.body.review);
-res.redirect("/")
 
+var ObjectId = req.params.ObjectId;
+var review = req.body.review;
+var newNote = new Note({
+    noteReview: review
+  });
+  newNote.save(function(err, doc) {
+    debugger
+    console.log(doc)
+    if (err) {
+      res.send(err);
+    } else {
+      Title.findOneAndUpdate({
+        _id: ObjectId},
+        {$push: {'notes': doc._id}}, {new: true}, function(err, review) {
+        if (err) {
+          console.log(err)
+        } else {
+          res.send("hooray it saved!" + review);
+        }
+      });
+    }
+  });
 });
 
 
