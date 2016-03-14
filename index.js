@@ -38,6 +38,19 @@ app.get('/', function(req, res) {
   res.sendfile("index.html");
 });
 
+
+app.get('/all', function(req, res) {
+   Title.find({}, function(err, doc) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(doc);
+    }
+  });
+});
+
+
+
 app.post("/submit", function(req, res) {
   var article = new Title({
     article: req.body.article
