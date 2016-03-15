@@ -49,9 +49,9 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/notes/:peanutButter', function(req, res) 
-  console.log(req.params.peanutButter)
-   Note.find({_id:req.params.peanutButter}, function(err, doc) {
+app.get('/notes/:id', function(req, res) {
+  console.log(req.params.id)
+   Note.find({_id:req.params.id}, function(err, doc) {
     if (err) {
       res.send(err);
     } else {
@@ -95,6 +95,22 @@ app.get("/find", function(req, res) {
   });
 });
 
+app.post("/delete/:id", function(req, res){
+  var ObjectId = req.params.id;
+Note
+    .findOneAndRemove({_id: ObjectId})
+    .exec(function(err, user) {
+      if (err) {
+        return res.status(500).json({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        return res.redirect("back");
+      }
+    });
+
+})
+
 app.post("/review/:ObjectId", function(req, res) {
 var ObjectId = req.params.ObjectId;
 var review = req.body.review;
@@ -102,6 +118,7 @@ var newNote = new Note({
     noteReview: review
   });
   newNote.save(function(err, doc) {
+
     console.log(doc)
     if (err) {
       res.send(err);
@@ -112,7 +129,7 @@ var newNote = new Note({
         if (err) {
           console.log(err)
         } else {
-          res.redirect("/");
+          res.redirect("back");
         }
       });
     }
@@ -148,7 +165,7 @@ app.get("/huffscrape", function(req, res) {
     }
 
   })
-  res.send("complete")
+  res.redirect("/")
 })
 
 app.listen(PORT, function() {

@@ -2,37 +2,38 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HuffPo Scrapped</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="col-md-12">
+          <h2 class="text-center"> <div id="headline"> </div> </h2>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-md btn-info btn-block"id="next">Next Headline >>> </button>
+        </div>
+      </div>
+        <div class "col-md-4">
+          <div id="review"> </div>
+        </div>
+        <div class "col-md-6">
+         <h4 class=""> Comments </h4>
+          <div id="revNum"> </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class "col-md-6">
+        <form action="/huffscrape" method="get">
+        <button class="btn btn-default" type="submit"> scrape moar huffpo</button>
+      </form>
+    </div>
+    </div>
 
-<!--     <h1>Animals</h1>
-    <button type="button" name="button" value="weight">Sort By Weight</button>
-    <button type="button" name="button" value="name">Sort By Name</button>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Number of Legs</th>
-          <th>Class</th>
-          <th>Weight</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table> -->
-    <div id="headline"> </div>
-    <button id="next">Next Headline </button>
-    <div id="review"> </div>
-    <div id="revNum"> </div>
-
-
-    <form action="/submit" method="post">
-    <input type="text" name="article" placeholder="username">
-  </form>
-      <form action="/huffscrape" method="post">
-    <input type="text" name="article" placeholder="scrape it">
-    <button type="submit"> scrape </button>
-  </form>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascript.js"></script>
 <!--     <script type="text/javascript" src="/frontend.js"></script> -->
