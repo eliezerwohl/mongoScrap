@@ -12,7 +12,6 @@ for (var i = 0; i < oneData.notes.length; i++) {
     var address = "/notes/";
     var address2 = address + noteNumber;
   $.getJSON(address2, function(data){
-    debugger
     console.log(data[0]._id)
       var deleted = "/delete/";
       var deleteNumber = data[0]._id;
@@ -46,7 +45,6 @@ for (var i = 0; i < oneData.notes.length; i++) {
     var address = "/notes/";
     var address2 = address + noteNumber;
   $.getJSON(address2, function(data){
-    debugger
     console.log(data[0]._id)
       var deleted = "/delete/";
       var deleteNumber = data[0]._id;

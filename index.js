@@ -23,7 +23,7 @@ db.once('open', function() {
 var Schema = mongoose.Schema;
 
 var Article = new Schema({
-  article: String,
+  article: {type:String, unique:true},
   notes: [{
     type: Schema.Types.ObjectId,
     ref:'Note'
@@ -49,8 +49,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/notes/:peanutButter', function(req, res) {
-  debugger
+app.get('/notes/:peanutButter', function(req, res) 
   console.log(req.params.peanutButter)
    Note.find({_id:req.params.peanutButter}, function(err, doc) {
     if (err) {
@@ -103,7 +102,6 @@ var newNote = new Note({
     noteReview: review
   });
   newNote.save(function(err, doc) {
-    debugger
     console.log(doc)
     if (err) {
       res.send(err);
@@ -114,7 +112,7 @@ var newNote = new Note({
         if (err) {
           console.log(err)
         } else {
-          res.send("hooray it saved!" + review);
+          res.redirect("/");
         }
       });
     }
