@@ -18,7 +18,7 @@ for (var i = 0; i < oneData.notes.length; i++) {
     var deletedAddress = deleted + deleteNumber ;
     $("#revNum").append(data[0].noteReview).append("<br>");
     $("#revNum").append('<form action="'+ deletedAddress + '" method="post">\
-      <input type="text" name="article" placeholder="username"><button type="submit">Deleted this comment</button></form>')
+      <button type="submit">Deleted this comment</button></form>')
   })
 }
 
@@ -28,8 +28,8 @@ var objectId =  oneData._id;
 
 $("#headline").append(oneData.article);
 $("#review").append('<form action="/review/' + objectId + '" method="post">\
-      <textarea rows="4" cols="50" name="review">  </textarea>\
-      <button type="submit"> Comment on this headline </button>\
+      <textarea rows="4" cols="50" name="review">  </textarea><br>\
+      <button class="btn btn-md" type="submit"> Comment on this headline </button>\
     </form>')
 })
 
@@ -51,7 +51,7 @@ for (var i = 0; i < oneData.notes.length; i++) {
     var deletedAddress = deleted + deleteNumber ;
     $("#revNum").append(data[0].noteReview).append("<br>");
     $("#revNum").append('<form action="'+ deletedAddress + '" method="post">\
-      <input type="text" name="article" placeholder="username"><button type="submit">Deleted this comment</button></form>')
+      <button type="submit">Deleted this comment</button></form>')
   })
 }
 
@@ -61,8 +61,8 @@ var objectId =  oneData._id;
 
 $("#headline").append(oneData.article);
 $("#review").append('<form action="/review/' + objectId + '" method="post">\
-      <textarea rows="4" cols="50" name="review">  </textarea>\
-      <button type="submit"> Comment on this headline </button>\
+      <textarea rows="4" cols="50" name="review">  </textarea><br>\
+      <button type="submit" class="btn btn-md"> Comment on this headline </button>\
     </form>')
 })
 })

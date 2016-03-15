@@ -105,7 +105,7 @@ Note
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        return res.json(user);
+        return res.redirect("back");
       }
     });
 
