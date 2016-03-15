@@ -165,7 +165,7 @@ app.get("/huffscrape", function(req, res) {
     }
 
   })
-  res.send("complete")
+  res.redirect("/")
 })
 
 app.listen(PORT, function() {
