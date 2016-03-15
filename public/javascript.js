@@ -1,19 +1,38 @@
 var dataNum;
 
 
-$.getJSON("/all", function(data){ 
-console.log(data[10])
+$.getJSON("/all", function(data){
 dataNum = 10;
 var oneData = data[dataNum];
-var objectId =  oneData._id;
 
-$("#headline").append(oneData.article)
+for (var i = 0; i < oneData.notes.length; i++) {
+
+  console.log(oneData.notes[i])
+  var noteNumber = oneData.notes[i]
+    var address = "/notes/";
+    var address2 = address + noteNumber;
+  $.getJSON(address2, function(data){
+    debugger
+    console.log(data[0]._id)
+      var deleted = "/delete/";
+      var deleteNumber = data[0]._id;
+    var deletedAddress = deleted + deleteNumber ;
+    $("#revNum").append(data[0].noteReview).append("<br>");
+    $("#revNum").append('<form action="'+ deletedAddress + '" method="post">\
+      <input type="text" name="article" placeholder="username"><button type="submit">Deleted this comment</button></form>')
+  })
+}
+
+$("#headline, #review, #revNum").empty()
+var objectId =  oneData._id;
+// console.log(oneData.notes.length);
+
+$("#headline").append(oneData.article);
 $("#review").append('<form action="/review/' + objectId + '" method="post">\
       <textarea rows="4" cols="50" name="review">  </textarea>\
       <button type="submit"> Comment on this headline </button>\
     </form>')
 })
-
 
 $("#next").on("click", function(){
 $.getJSON("/all", function(data){
@@ -42,6 +61,11 @@ $("#headline, #review, #revNum").empty()
 var objectId =  oneData._id;
 // console.log(oneData.notes.length);
 
+$("#headline").append(oneData.article);
+$("#review").append('<form action="/review/' + objectId + '" method="post">\
+      <textarea rows="4" cols="50" name="review">  </textarea>\
+      <button type="submit"> Comment on this headline </button>\
+    </form>')
 })
 })
 
