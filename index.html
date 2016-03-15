@@ -2,33 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HuffPo Scrapped</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
   </head>
   <body>
-
-<!--     <h1>Animals</h1>
-    <button type="button" name="button" value="weight">Sort By Weight</button>
-    <button type="button" name="button" value="name">Sort By Name</button>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Number of Legs</th>
-          <th>Class</th>
-          <th>Weight</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table> -->
     <div id="headline"> </div>
     <button id="next">Next Headline </button>
     <div id="review"> </div>
     <div id="revNum"> </div>
 
-
-    <form action="/submit" method="post">
-    <input type="text" name="article" placeholder="username">
-  </form>
       <form action="/huffscrape" method="get">
     <input type="text" name="article" placeholder="scrape it">
     <button type="submit"> scrape </button>
